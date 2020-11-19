@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import CreateUsuariosService from "../services/createUsuarios.service";
 import PessoasRepository from "../repositories/Pessoas";
-import verificarAutenticado from "../middleware/VerificarAutenticado";
+import verificarAutenticado from "../middleware/verificarAutenticado";
 
 const usuariosRouter = Router();
 
