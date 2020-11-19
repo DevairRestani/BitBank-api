@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import AutenticacaoUserService from "../services/AutenticacaoUser.service";
+import AutenticacaoUserService from "../services/AutenticacaoUsuario.service";
 
 const loginRouter = Router();
 
