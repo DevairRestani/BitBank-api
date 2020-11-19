@@ -1,8 +1,8 @@
 {
-  "name": "GamesFounder-api",
+  "name": "BitBank-api",
   "version": "0.0.1",
   "main": "dist/server.js",
-  "repository": "https://github.com/DevairRestani/GamesFounder-api.git",
+  "repository": "https://github.com/DevairRestani/BitBank-api.git",
   "author": "Devair Restani",
   "license": "MIT",
   "scripts": {
