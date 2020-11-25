@@ -11,7 +11,7 @@ interface Request {
     telefone: string;
     tipo: string;
     tipoPessoa: boolean;
-    acesso: boolean;
+    acesso: boolean | true;
     moedas: Moedas;
     senha: string;
 }
@@ -32,16 +32,16 @@ class CreateUsuariosServices {
         const MoedasRepository = getRepository(Moedas);
 
         const MoedasUsuario = MoedasRepository.create({
-            bch: moedas.bch,
-            bnb: moedas.bnb,
-            bsv: moedas.bsv,
-            btc: moedas.btc,
-            dot: moedas.dot,
-            eth: moedas.eth,
-            ltc: moedas.ltc,
-            usdt: moedas.usdt,
-            xrp: moedas.xrp,
-            link: moedas.link,
+            bch: moedas.bch || false,
+            bnb: moedas.bnb || false,
+            bsv: moedas.bsv || false,
+            btc: moedas.btc || false,
+            dot: moedas.dot || false,
+            eth: moedas.eth || false,
+            ltc: moedas.ltc || false,
+            usdt: moedas.usdt || false,
+            xrp: moedas.xrp || false,
+            link: moedas.link || false,
         });
 
         const MoedasSalvo = await MoedasRepository.save(MoedasUsuario);
@@ -53,7 +53,7 @@ class CreateUsuariosServices {
             documento,
             email,
             telefone,
-            tipo,
+            tipo: tipo || "usr",
             tipoPessoa,
             acesso,
             moedas: MoedasSalvo,

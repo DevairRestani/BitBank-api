@@ -15,7 +15,7 @@ loginRouter.post("/", async (request, response) => {
             senha,
         });
 
-        return response.json({ usuario, token });
+        return response.status(202).json({ usuario, token });
     } catch (err) {
         return response.status(400).json({ error: err.message });
     }

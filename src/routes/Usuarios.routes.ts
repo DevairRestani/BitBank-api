@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import CreateUsuariosService from "../services/createUsuarios.service";
 import PessoasRepository from "../repositories/Pessoas";
-import verificarAutenticado from "../middleware/verificarAutenticado";
+import verificarAutenticado from "../middleware/VerificarUsuario";
 
 const usuariosRouter = Router();
 
@@ -35,17 +35,17 @@ usuariosRouter
                 senha,
             });
 
-            return res.json(User);
+            return res.status(201).json(User);
         } catch (err) {
             return res.status(400).json({ message: err.message });
         }
     })
-    .post("/buscar", verificarAutenticado, async (req, res) => {
+    .post("/buscar", async (req, res) => {
         try {
-            const IdPessoa = req.usuario.id;
+            const { email } = req.body;
 
             const pessoas = new PessoasRepository();
-            let pessoa = await pessoas.ListAll(IdPessoa);
+            let pessoa = await pessoas.ListAll(email);
 
             if (pessoa) {
                 pessoa.senha = "/";

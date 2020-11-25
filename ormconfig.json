@@ -1,8 +1,8 @@
-[
+
   {
     "name": "default",
     "type": "postgres",
-    "host": "localhost",
+    "host": "131.221.189.3",
     "port": 5432,
     "username": "postgres",
     "password": "bitbank",
@@ -13,4 +13,4 @@
       "migrationsDir": "./src/database/migrations",
       "entitiesDir": "./src/models/entities"
     }
-]
+  }

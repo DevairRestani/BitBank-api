@@ -3,8 +3,8 @@ import { EntityRepository, Repository } from "typeorm";
 
 @EntityRepository()
 class PessoasRepository extends Repository<Pessoas> {
-    public async ListAll(id: string): Promise<Pessoas | undefined> {
-        return await this.findOne({ id });
+    public async ListAll(email: string): Promise<Pessoas | undefined> {
+        return await this.findOne({ email });
     }
 }
 
