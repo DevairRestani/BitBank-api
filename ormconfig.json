@@ -2,7 +2,7 @@
   {
     "name": "default",
     "type": "postgres",
-    "host": "131.221.189.3",
+    "host": "localhost",
     "port": 5432,
     "username": "postgres",
     "password": "bitbank",
