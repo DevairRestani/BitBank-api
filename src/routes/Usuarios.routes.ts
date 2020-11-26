@@ -1,8 +1,7 @@
 import { Router } from "express";
 
 import CreateUsuariosService from "../services/createUsuarios.service";
-import PessoasRepository from "../repositories/Pessoas";
-import verificarAutenticado from "../middleware/VerificarUsuario";
+import Usuario from "../services/Usuario.service";
 
 const usuariosRouter = Router();
 
@@ -40,18 +39,50 @@ usuariosRouter
             return res.status(400).json({ message: err.message });
         }
     })
-    .post("/buscar", async (req, res) => {
+    .post("/atualizar", async (req, res) => {
         try {
-            const { email } = req.body;
+            const {
+                id,
+                nome,
+                documento,
+                email,
+                telefone,
+                tipo,
+                tipoPessoa,
+                acesso,
+                moedas,
+                senha,
+            } = req.body;
 
-            const pessoas = new PessoasRepository();
-            let pessoa = await pessoas.ListAll(email);
+            const AtualizarUser = new Usuario();
 
-            if (pessoa) {
-                pessoa.senha = "/";
-            }
+            const usuarioAtualizado = await AtualizarUser.salvar({
+                id,
+                nome,
+                documento,
+                email,
+                telefone,
+                tipo,
+                tipoPessoa,
+                acesso,
+                moedas,
+                senha,
+            });
 
-            return res.status(200).json({ pessoa });
+            return res.status(200).json(usuarioAtualizado);
+        } catch (err) {
+            return res.status(400).json({ message: err.message });
+        }
+    })
+    .post("/recuperar", async (req, res) => {
+        try {
+            const { id } = req.body;
+
+            const AtualizarUser = new Usuario();
+
+            const usuario = await AtualizarUser.recuperar(id);
+
+            return res.status(200).json(usuario);
         } catch (err) {
             return res.status(400).json({ message: err.message });
         }
